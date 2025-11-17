@@ -16,6 +16,13 @@ export class HomeComponent {
       technologies: ['Flutter', 'Dart', 'Firebase', 'Riverpod', 'Clean Architecture'],
       logo: 'assets/equigasto-logo.png',
       isMain: true
+    },
+    {
+      title: 'Abrazamillas',
+      description: 'Aplicación web Angular para la II Concentración Motera Abrazamillas en Cinco Casas (Ciudad Real). Incluye información del evento, programación, rutas y patrocinadores. Desarrollada con Angular 20 y Server-Side Rendering (SSR).',
+      technologies: ['Angular 20', 'TypeScript', 'SSR', 'SCSS', 'Express'],
+      logo: 'assets/abrazamillas-logo.png',
+      isMain: false
     }
   ];
 }
