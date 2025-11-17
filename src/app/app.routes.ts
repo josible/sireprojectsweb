@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { JoinGroupComponent } from './join-group/join-group.component';
-import { App } from './app';
+import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
   {
@@ -9,7 +9,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: App
+    component: HomeComponent
   },
   {
     path: '**',

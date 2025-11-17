@@ -11,7 +11,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class JoinGroupComponent implements OnInit {
   groupId: string | null = null;
-  appOpened = false;
   playStoreUrl = 'https://play.google.com/store/apps/details?id=com.sire.equigasto';
 
   constructor(
@@ -44,11 +43,6 @@ export class JoinGroupComponent implements OnInit {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-
-    // Si después de un tiempo no se abrió la app, mostrar el fallback
-    setTimeout(() => {
-      this.appOpened = false;
-    }, 2000);
   }
 
   openPlayStore() {

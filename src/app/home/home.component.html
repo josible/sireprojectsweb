@@ -1,0 +1,57 @@
+<header class="header">
+  <div class="container">
+    <h1 class="logo">SireProjects</h1>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <h2 class="hero-title">Bienvenido a SireProjects</h2>
+      <p class="hero-subtitle">Mi espacio personal para aprender y desarrollar aplicaciones móviles</p>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="container">
+      <h2 class="section-title">Sobre mí</h2>
+      <p class="about-text">
+        Soy un desarrollador en proceso de aprendizaje, enfocado en el desarrollo de aplicaciones móviles. 
+        Actualmente estoy explorando el mundo del desarrollo móvil, aprendiendo nuevas tecnologías y 
+        construyendo proyectos que me permiten mejorar mis habilidades día a día. Este es mi espacio 
+        personal donde comparto mis proyectos y mi evolución como desarrollador.
+      </p>
+    </div>
+  </section>
+
+  <section class="projects">
+    <div class="container">
+      <h2 class="section-title">Mis Proyectos</h2>
+      <div class="projects-grid">
+        @for (project of projects; track project.title) {
+          <article class="project-card" [class.main-project]="project.isMain">
+            @if (project.logo) {
+              <div class="project-logo">
+                <img [src]="project.logo" [alt]="project.title + ' logo'" />
+              </div>
+            }
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-description">{{ project.description }}</p>
+            <div class="project-technologies">
+              @for (tech of project.technologies; track tech) {
+                <span class="tech-tag">{{ tech }}</span>
+              }
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer-text">&copy; 2025 SireProjects. Proyecto personal de aprendizaje y desarrollo.</p>
+  </div>
+</footer>
+
