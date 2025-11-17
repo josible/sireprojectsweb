@@ -13,19 +13,20 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.logo {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #111827;
-  margin: 0;
-  letter-spacing: -0.025em;
-}
-
 .hero {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #ffffff;
   padding: 6rem 0;
   text-align: center;
+}
+
+.hero-logo {
+  height: 200px;
+  width: auto;
+  object-fit: contain;
+  margin: 0 auto 2rem;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
 .hero-title {
@@ -201,6 +202,11 @@
 
   .hero {
     padding: 4rem 0;
+  }
+
+  .hero-logo {
+    height: 150px;
+    margin-bottom: 1.5rem;
   }
 
   .about,
