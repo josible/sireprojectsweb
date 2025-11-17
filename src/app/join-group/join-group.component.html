@@ -1,0 +1,44 @@
+<div class="join-container">
+  <div class="join-card">
+    <div class="logo-section">
+      <img src="assets/equigasto-logo.png" alt="EquiGasto" class="logo" />
+      <h1>EquiGasto</h1>
+    </div>
+
+    <div class="content-section">
+      <h2>¡Únete al grupo!</h2>
+      <p class="description">
+        Has sido invitado a unirte a un grupo en EquiGasto.
+      </p>
+
+      <div class="code-section">
+        <label>Código del grupo:</label>
+        <div class="code-display">
+          <code class="code-text">{{ groupId }}</code>
+          <button class="copy-btn" (click)="copyCode()" title="Copiar código">
+            📋
+          </button>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" (click)="tryOpenApp()">
+          Abrir en la app
+        </button>
+        <button class="btn btn-secondary" (click)="openPlayStore()">
+          Instalar EquiGasto
+        </button>
+      </div>
+
+      <div class="instructions">
+        <h3>Instrucciones:</h3>
+        <ol>
+          <li>Si ya tienes EquiGasto instalado, toca "Abrir en la app"</li>
+          <li>Si no tienes la app, instálala desde Google Play Store</li>
+          <li>Una vez instalada, abre la app y usa el código de arriba para unirte al grupo</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
