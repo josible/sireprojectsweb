@@ -58,8 +58,6 @@ export class JoinGroupComponent implements OnInit {
       return;
     }
 
-    // Intentar abrir la app inmediatamente
-    this.tryOpenApp();
   }
 
   private resolveAppConfig() {
