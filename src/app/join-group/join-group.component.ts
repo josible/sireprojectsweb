@@ -2,6 +2,36 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
+type AppType = 'equigasto' | 'dojotime';
+
+interface AppConfig {
+  name: string;
+  description: string;
+  logo: string;
+  playStoreUrl: string;
+  deepLinkScheme: string;
+  installCta: string;
+}
+
+const APP_CONFIG: Record<AppType, AppConfig> = {
+  equigasto: {
+    name: 'EquiGasto',
+    description: 'Has sido invitado a unirte a un grupo en EquiGasto.',
+    logo: 'assets/equigasto-logo.png',
+    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.sire.equigasto',
+    deepLinkScheme: 'equigasto://app/join/',
+    installCta: 'Instalar EquiGasto'
+  },
+  dojotime: {
+    name: 'DojoTime',
+    description: 'Has sido invitado a unirte al dojo en DojoTime.',
+    logo: 'assets/dojotime-logo.png',
+    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.sire.dojotime',
+    deepLinkScheme: 'dojotime://app/join/',
+    installCta: 'Instalar DojoTime'
+  }
+};
+
 @Component({
   selector: 'app-join-group',
   standalone: true,
@@ -11,7 +41,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class JoinGroupComponent implements OnInit {
   groupId: string | null = null;
-  playStoreUrl = 'https://play.google.com/store/apps/details?id=com.sire.equigasto';
+  appConfig: AppConfig = APP_CONFIG.equigasto;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,6 +49,7 @@ export class JoinGroupComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.resolveAppConfig();
     this.groupId = this.route.snapshot.paramMap.get('groupId');
     
     if (!this.groupId) {
@@ -31,10 +62,22 @@ export class JoinGroupComponent implements OnInit {
     this.tryOpenApp();
   }
 
+  private resolveAppConfig() {
+    const routeApp = this.route.snapshot.data['app'] as AppType | undefined;
+    if (routeApp && APP_CONFIG[routeApp]) {
+      this.appConfig = APP_CONFIG[routeApp];
+      return;
+    }
+
+    // Fallback: detectar por URL
+    const isDojoTime = window.location.pathname.includes('/dojotime/');
+    this.appConfig = isDojoTime ? APP_CONFIG.dojotime : APP_CONFIG.equigasto;
+  }
+
   tryOpenApp() {
     if (!this.groupId) return;
 
-    const deepLink = `equigasto://app/join/${this.groupId}`;
+    const deepLink = `${this.appConfig.deepLinkScheme}${this.groupId}`;
     
     // Intentar abrir la app
     const link = document.createElement('a');
@@ -46,7 +89,7 @@ export class JoinGroupComponent implements OnInit {
   }
 
   openPlayStore() {
-    window.open(this.playStoreUrl, '_blank');
+    window.open(this.appConfig.playStoreUrl, '_blank');
   }
 
   copyCode() {

@@ -6,7 +6,13 @@ import { PrivacyComponent } from './privacy/privacy.component';
 export const routes: Routes = [
   {
     path: 'join/:groupId',
-    component: JoinGroupComponent
+    component: JoinGroupComponent,
+    data: { app: 'equigasto' }
+  },
+  {
+    path: 'dojotime/join/:groupId',
+    component: JoinGroupComponent,
+    data: { app: 'dojotime' }
   },
   {
     path: '',
