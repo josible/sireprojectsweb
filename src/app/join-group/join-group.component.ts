@@ -74,18 +74,23 @@ export class JoinGroupComponent implements OnInit {
     this.appConfig = isDojoTime ? APP_CONFIG.dojotime : APP_CONFIG.equigasto;
   }
 
-  tryOpenApp() {
+  tryOpenApp(userInitiated = false) {
     if (!this.groupId) return;
 
     const deepLink = `${this.appConfig.deepLinkScheme}${this.groupId}`;
     
-    // Intentar abrir la app
-    const link = document.createElement('a');
-    link.href = deepLink;
-    link.style.display = 'none';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Intentar abrir la app redirigiendo la ubicación actual
+    window.location.href = deepLink;
+
+    // Si el usuario lo solicitó manualmente, mostrar fallback tras un breve tiempo
+    if (userInitiated) {
+      setTimeout(() => {
+        const isStillVisible = document.visibilityState === 'visible';
+        if (isStillVisible) {
+          this.openPlayStore();
+        }
+      }, 1800);
+    }
   }
 
   openPlayStore() {
