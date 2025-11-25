@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ActivatedRoute, Router } from '@angular/router';
 
 type AppType = 'equigasto' | 'dojotime';
@@ -35,7 +35,7 @@ const APP_CONFIG: Record<AppType, AppConfig> = {
 @Component({
   selector: 'app-join-group',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './join-group.component.html',
   styleUrl: './join-group.component.scss'
 })

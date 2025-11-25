@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class HomeComponent {
     {
       title: 'Abrazamillas',
       description: 'Aplicación web Angular para la II Concentración Motera Abrazamillas en Cinco Casas (Ciudad Real). Incluye información del evento, programación, rutas y patrocinadores. Desarrollada con Angular 20 y Server-Side Rendering (SSR).',
-      technologies: ['Angular 20', 'TypeScript', 'SSR', 'SCSS', 'Express'],
+      technologies: ['Angular 21', 'TypeScript', 'SSR', 'SCSS', 'Express'],
       logo: 'assets/abrazamillas-logo.png',
       isMain: false
     },
