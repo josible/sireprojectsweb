@@ -15,6 +15,11 @@ export const routes: Routes = [
     data: { app: 'dojotime' }
   },
   {
+    path: 'escaperadar/join/:groupId',
+    component: JoinGroupComponent,
+    data: { app: 'escaperadar' }
+  },
+  {
     path: '',
     component: HomeComponent
   },

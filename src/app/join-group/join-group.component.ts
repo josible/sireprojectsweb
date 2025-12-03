@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
-type AppType = 'equigasto' | 'dojotime';
+type AppType = 'equigasto' | 'dojotime' | 'escaperadar';
 
 interface AppConfig {
   name: string;
@@ -29,6 +29,14 @@ const APP_CONFIG: Record<AppType, AppConfig> = {
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.sire.dojotime',
     deepLinkScheme: 'dojotime://app/join/',
     installCta: 'Instalar DojoTime'
+  },
+  escaperadar: {
+    name: 'EscapeRadar',
+    description: 'Has sido invitado a unirte a un grupo en EscapeRadar.',
+    logo: 'assets/sireprojects-logo.png',
+    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.sire.escaperadar',
+    deepLinkScheme: 'escaperadar://groups/join/',
+    installCta: 'Instalar EscapeRadar'
   }
 };
 
@@ -69,7 +77,14 @@ export class JoinGroupComponent implements OnInit {
 
     // Fallback: detectar por URL
     const isDojoTime = window.location.pathname.includes('/dojotime/');
-    this.appConfig = isDojoTime ? APP_CONFIG.dojotime : APP_CONFIG.equigasto;
+    const isEscapeRadar = window.location.pathname.includes('/escaperadar/');
+    if (isDojoTime) {
+      this.appConfig = APP_CONFIG.dojotime;
+    } else if (isEscapeRadar) {
+      this.appConfig = APP_CONFIG.escaperadar;
+    } else {
+      this.appConfig = APP_CONFIG.equigasto;
+    }
   }
 
   tryOpenApp(userInitiated = false) {
