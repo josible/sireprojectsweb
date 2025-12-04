@@ -13,11 +13,31 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
+.back-link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &:hover {
+    color: #764ba2;
+    text-decoration: underline;
+  }
+}
+
 .hero {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #ffffff;
   padding: 6rem 0;
   text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .hero-logo {
@@ -42,9 +62,10 @@
   margin: 0;
   opacity: 0.95;
   font-weight: 400;
+  line-height: 1.6;
 }
 
-.about {
+.details {
   padding: 5rem 0;
   background-color: #f9fafb;
 }
@@ -58,116 +79,71 @@
   letter-spacing: -0.025em;
 }
 
-.about-text {
-  font-size: 1.125rem;
-  line-height: 1.75;
-  color: #4b5563;
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.projects {
-  padding: 5rem 0;
-  background-color: #ffffff;
-}
-
-.projects-grid {
+.technologies-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
   max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
-.project-card-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-.project-card {
+.tech-card {
   background-color: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
-  padding: 2rem;
+  padding: 1.5rem;
+  text-align: center;
   transition: all 0.3s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
 
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     border-color: #667eea;
   }
-
-  &.main-project {
-    border-color: #667eea;
-    border-width: 2px;
-    background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
-  }
 }
 
-.project-logo {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 1.5rem;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 0.5rem;
-  }
-}
-
-.project-title {
-  font-size: 1.5rem;
+.tech-name {
+  font-size: 1.125rem;
   font-weight: 600;
   color: #111827;
-  margin: 0 0 1rem 0;
+}
+
+.download {
+  padding: 5rem 0;
+  background-color: #ffffff;
   text-align: center;
 }
 
-.project-description {
-  font-size: 1rem;
-  line-height: 1.6;
+.download-text {
+  font-size: 1.125rem;
   color: #6b7280;
-  margin: 0 0 1.5rem 0;
-  flex-grow: 1;
+  margin: 0 0 2rem 0;
 }
 
-.project-technologies {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-}
-
-.tech-tag {
-  display: inline-block;
-  background-color: #f3f4f6;
-  color: #4b5563;
-  padding: 0.375rem 0.75rem;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
+.play-store-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #667eea;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 
   &:hover {
-    background-color: #667eea;
-    color: #ffffff;
+    background-color: #764ba2;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -203,10 +179,6 @@
     font-size: 1.875rem;
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
   .hero {
     padding: 4rem 0;
   }
@@ -216,14 +188,18 @@
     margin-bottom: 1.5rem;
   }
 
-  .about,
-  .projects {
+  .details,
+  .download {
     padding: 3rem 0;
   }
 
-  .project-logo {
-    width: 60px;
-    height: 60px;
+  .technologies-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .play-store-button {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
   }
 }
 
