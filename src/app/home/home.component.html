@@ -29,40 +29,45 @@
       <h2 class="section-title">Mis Proyectos</h2>
       <div class="projects-grid">
         @for (project of projects; track project.title) {
-          @if (project.title === 'EquiGasto') {
-            <a [routerLink]="['/equigasto']" class="project-card-link">
-              <article class="project-card" [class.main-project]="project.isMain">
-                @if (project.logo) {
-                  <div class="project-logo">
-                    <img [src]="project.logo" [alt]="project.title + ' logo'" />
-                  </div>
-                }
-                <h3 class="project-title">{{ project.title }}</h3>
-                <p class="project-description">{{ project.description }}</p>
-                <div class="project-technologies">
-                  @for (tech of project.technologies; track tech) {
-                    <span class="tech-tag">{{ tech }}</span>
+              @if ((project.playStoreUrl || project.externalUrl)) {
+                <a
+                  [href]="project.playStoreUrl || project.externalUrl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-card-link"
+                >
+                  <article class="project-card" [class.main-project]="project.isMain">
+                    @if (project.logo) {
+                      <div class="project-logo">
+                        <img [src]="project.logo" [alt]="project.title + ' logo'" />
+                      </div>
+                    }
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-description">{{ project.description }}</p>
+                    <div class="project-technologies">
+                      @for (tech of project.technologies; track tech) {
+                        <span class="tech-tag">{{ tech }}</span>
+                      }
+                    </div>
+                  </article>
+                </a>
+              } @else {
+                <article class="project-card" [class.main-project]="project.isMain">
+                  @if (project.logo) {
+                    <div class="project-logo">
+                      <img [src]="project.logo" [alt]="project.title + ' logo'" />
+                    </div>
                   }
-                </div>
-              </article>
-            </a>
-          } @else {
-            <article class="project-card" [class.main-project]="project.isMain">
-              @if (project.logo) {
-                <div class="project-logo">
-                  <img [src]="project.logo" [alt]="project.title + ' logo'" />
-                </div>
+                  <h3 class="project-title">{{ project.title }}</h3>
+                  <p class="project-description">{{ project.description }}</p>
+                  <div class="project-technologies">
+                    @for (tech of project.technologies; track tech) {
+                      <span class="tech-tag">{{ tech }}</span>
+                    }
+                  </div>
+                </article>
               }
-              <h3 class="project-title">{{ project.title }}</h3>
-              <p class="project-description">{{ project.description }}</p>
-              <div class="project-technologies">
-                @for (tech of project.technologies; track tech) {
-                  <span class="tech-tag">{{ tech }}</span>
-                }
-              </div>
-            </article>
-          }
-        }
+            }
       </div>
     </div>
   </section>

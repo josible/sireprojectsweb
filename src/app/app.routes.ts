@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { JoinGroupComponent } from './join-group/join-group.component';
 import { HomeComponent } from './home/home.component';
 import { PrivacyComponent } from './privacy/privacy.component';
-import { EquigastoComponent } from './equigasto/equigasto.component';
 
 export const routes: Routes = [
   {
@@ -27,10 +26,6 @@ export const routes: Routes = [
   {
     path: 'privacidad',
     component: PrivacyComponent
-  },
-  {
-    path: 'equigasto',
-    component: EquigastoComponent
   },
   {
     path: '**',
